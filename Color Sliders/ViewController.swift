@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         blueSlider.value = 0.0
         greenSlider.value = 0.0
         alphaSlider.value = 1.0
-        
+        updateView()
         
         
     }
@@ -40,6 +40,27 @@ class ViewController: UIViewController {
     @IBAction func sliderChanged(_ sender: Any) {
         
         print("Slider Changed")
+        updateView()
+    }
+    
+    func updateView() {
+        let greenValue = greenSlider.value
+        let redValue = redSlider.value
+        let blueValue = blueSlider.value
+        let alphaValue = alphaSlider.value
+        
+        print("Values: \(redValue) \(greenValue) \(blueValue) \(alphaValue)")
+        
+        redValueLabel.text = String(format: "%.2f", redValue)
+        greenValueLabel.text = String(format: "%.2f", greenValue)
+        blueValueLabel.text = String(format: "%.2f", blueValue)
+        alphaValueLabel.text = String(format: "%.2f", alphaValue)
+    
+        colorView.backgroundColor = UIColor(
+            red: CGFloat(redValue),
+            green: CGFloat(greenValue),
+            blue: CGFloat(blueValue),
+            alpha: CGFloat(alphaValue))
         
     }
     
